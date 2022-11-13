@@ -2,11 +2,14 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    paths:
+      - 'Source/**'
   pull_request:
-    branches: [ main ]
+    paths:
+      - 'Source/**'
   schedule:
-    - cron: '18 3 * * 2'
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 jobs:
   analyze:
@@ -14,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
       matrix:
         language: [ 'javascript' ]
 
